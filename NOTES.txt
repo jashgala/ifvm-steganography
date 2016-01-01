@@ -1,0 +1,10 @@
+Jash:
+-----
+For capturing video frames: VideoCapture.grab can be used (can also be used with an MP4 file):
+http://stackoverflow.com/questions/18954889/how-to-process-images-of-a-video-frame-by-frame-in-video-streaming-using-opencv
+http://docs.opencv.org/3.0-beta/modules/videoio/doc/reading_and_writing_video.html
+
+File format of captured images and their persistence in subsequent runs needs to be verified.
+
+Others:
+-------
