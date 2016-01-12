@@ -4,7 +4,9 @@ For capturing video frames: VideoCapture.grab can be used (can also be used with
 http://stackoverflow.com/questions/18954889/how-to-process-images-of-a-video-frame-by-frame-in-video-streaming-using-opencv
 http://docs.opencv.org/3.0-beta/modules/videoio/doc/reading_and_writing_video.html
 
-File format of captured images and their persistence in subsequent runs needs to be verified.
+File format of captured images and their persistence in subsequent runs needs to be verified. [Confirmed that the set of frames returned using VideoCapture are always the same.]
+
+Added demo of OpenCV frame extraction in Python 2.7. Check frames.py
 
 Others:
 -------
