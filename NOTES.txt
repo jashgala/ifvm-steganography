@@ -8,5 +8,7 @@ File format of captured images and their persistence in subsequent runs needs to
 
 Added demo of OpenCV frame extraction in Python 2.7. Check frames.py
 
+Worth taking a look at for LSB text-on-image stego using OpenCV: https://github.com/RobinDavid/LSB-Steganography
+
 Others:
 -------
