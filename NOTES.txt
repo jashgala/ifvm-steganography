@@ -10,11 +10,11 @@ Added demo of OpenCV frame extraction in Python 2.7. Check frames.py
 
 Worth taking a look at for LSB text-on-image stego using OpenCV: https://github.com/RobinDavid/LSB-Steganography
 
-For performing the hashing (key-making) from the Frame number we could use Python's hashlib: https://docs.python.org/2/library/hashlib.html#module-hashlib
-Hashlib is a built-in module that supportss SHA1, SHA256 etc. We could use the in built functions to produce the appropriate hashes/messaage digests for our purposes.
+~For performing the hashing (key-making) from the Frame number we could use Python's hashlib: https://docs.python.org/2/library/hashlib.html#module-hashlib
+Hashlib is a built-in module that supportss SHA1, SHA256 etc. We could use the in built functions to produce the appropriate hashes/messaage digests for our purposes~
 
-A bette alternative would be to use PyCrypto for the above purpose rather than normal hashes. We could use one encryption algorithm. Pretty easy to run. I will add a sample.
-
+A bette alternative would be to use **PyCrypto** for the above purpose rather than normal hashes. We could use one encryption algorithm. 
+Pretty easy to run. I will add a sample: frameNo2Key.py
 
 
 Others:
