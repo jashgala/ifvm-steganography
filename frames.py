@@ -1,4 +1,5 @@
 #### Demonstration of frame splitting using OpenCV in Python #### 
+## Author: Jash Gala
 
 import cv2
 import numpy
