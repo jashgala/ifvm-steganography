@@ -16,10 +16,7 @@ Hashlib is a built-in module that supportss SHA1, SHA256 etc. We could use the i
 A bette alternative would be to use PyCrypto for the above purpose rather than normal hashes. We could use one encryption algorithm. 
 Pretty easy to run. I will add a sample: frameNo2Key.py
 
-Rohit:
-------
-
-Just started using Git!
+Back To Original
 
 Others:
 -------
