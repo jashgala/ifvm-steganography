@@ -15,4 +15,4 @@ for i in  range(0, length):
         cv2.imwrite('frame' + str(i) + '.png', frame)
         print 'wrote frame ' + str(i)
 
-print "Done with frame extraction!"
+print "Frame extraction Done!"
