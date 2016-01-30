@@ -56,38 +56,39 @@ def stegoTextBlocks(frames, occ, blocks):
 	stegimg = stepic.encode(img, indexData)
 	frames[index] = np.array(stegimg)
 
-### MAIN PROGRAM ###
-cap = cv2.VideoCapture('sample1.avi')
-frameCount = cap.get(cv2.CAP_PROP_FRAME_COUNT)
-print frameCount 
+if __name__ == '__main__':
+	### MAIN PROGRAM ###
+	cap = cv2.VideoCapture('sample1.avi')
+	frameCount = cap.get(cv2.CAP_PROP_FRAME_COUNT)
+	print frameCount 
 
-# generate all frames
-frames = []
-while True:
-	ret, temp = cap.read()
-	if not ret:
-		break
-	frames += [temp]
+	# generate all frames
+	frames = []
+	while True:
+		ret, temp = cap.read()
+		if not ret:
+			break
+		frames += [temp]
 
-# define capacity of each data frame
-h, w = frames[0].shape[:2]
-pixelCount = h * w - 1
-byteCapacity = pixelCount / 9 # defines maximum no. of bytes that can be stored in an image (Ref. http://domnit.org/blog/2007/02/stepic-explanation.html)
+	# define capacity of each data frame
+	h, w = frames[0].shape[:2]
+	pixelCount = h * w - 1
+	byteCapacity = pixelCount / 9 # defines maximum no. of bytes that can be stored in an image (Ref. http://domnit.org/blog/2007/02/stepic-explanation.html)
 
-print byteCapacity
+	print byteCapacity
 
-occ = [] # <- currently no frames will be occupied
+	occ = [] # <- currently no frames will be occupied
 
-blocks = generateTextBlocks('file1.txt', byteCapacity)
-stegoTextBlocks(frames, occ, blocks)
+	blocks = generateTextBlocks('file1.txt', byteCapacity)
+	stegoTextBlocks(frames, occ, blocks)
 
-# write image into video
-h, w = frames[0].shape[:2]
-fps = cap.get(cv2.CAP_PROP_FPS) # Framerate of o/p = i/p
-fourcc = cv2.VideoWriter_fourcc(*'DIB ')
-out = cv2.VideoWriter('output.avi', fourcc, fps, (w,h))
+	# write image into video
+	h, w = frames[0].shape[:2]
+	fps = cap.get(cv2.CAP_PROP_FPS) # Framerate of o/p = i/p
+	fourcc = cv2.VideoWriter_fourcc(*'DIB ')
+	out = cv2.VideoWriter('output.avi', fourcc, fps, (w,h))
 
-for each_frame in frames:
-	out.write(each_frame)
+	for each_frame in frames:
+		out.write(each_frame)
 
-print 'Steganography done. Look for output.avi'
+	print 'Steganography done. Look for output.avi'
