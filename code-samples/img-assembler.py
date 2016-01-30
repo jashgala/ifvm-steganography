@@ -8,10 +8,10 @@ def main():
     rows, cols = 2,2
     # Image slices will be extracted by reading the index and list t will be populated in a loop
     t = []
-    t.append(Image.open("extracted1.png").resize((slice_size[0], slice_size[1])))
-    t.append(Image.open("extracted2.png").resize((slice_size[0], slice_size[1])))
-    t.append(Image.open("extracted3.png").resize((slice_size[0], slice_size[1])))
-    t.append(Image.open("extracted4.png").resize((slice_size[0], slice_size[1])))
+    t.append(Image.open("./extracted1.png").resize((slice_size[0], slice_size[1])))
+    t.append(Image.open("./extracted2.png").resize((slice_size[0], slice_size[1])))
+    t.append(Image.open("./extracted3.png").resize((slice_size[0], slice_size[1])))
+    t.append(Image.open("./extracted4.png").resize((slice_size[0], slice_size[1])))
     reassemble_image(t)
 
 def reassemble_image(t, slice_size = (73,73), rows = 2, cols = 2):
@@ -25,6 +25,7 @@ def reassemble_image(t, slice_size = (73,73), rows = 2, cols = 2):
             position = (i+1,j+1)
             tile = image_slicer.Tile(t[number], number, position, coords)
             tiles.append(tile)
+            number+=1
     res = image_slicer.join(tuple(tiles))
     res.save("Final.png")
 
