@@ -12,35 +12,36 @@ def decodeIndexHash(hash):
 	print 'On decoding Hash, Frame number is:',frame_no_int
 	return frame_no_int
 
-# code to test if steganography was successful
-cap = cv2.VideoCapture('output.avi')
+if __name__ == '__main__':
+	# code to test if steganography was successful
+	cap = cv2.VideoCapture('output.avi')
 
-input_hash = raw_input('Enter the key for your data: ')
-index = int(decodeIndexHash(binascii.unhexlify(input_hash))) # <- Index at which our data is hidden
+	input_hash = raw_input('Enter the key for your data: ')
+	index = int(decodeIndexHash(binascii.unhexlify(input_hash))) # <- Index at which our data is hidden
 
-frames = []
+	frames = []
 
-while True:
-	ret, temp = cap.read()
-	if not ret:
-		break
-	frames += [temp]
+	while True:
+		ret, temp = cap.read()
+		if not ret:
+			break
+		frames += [temp]
 
-img = Image.fromarray(frames[index])
-indexData = stepic.decode(img).decode()
+	img = Image.fromarray(frames[index])
+	indexData = stepic.decode(img).decode()
 
-indexData = indexData.split(';')
+	indexData = indexData.split(';')
 
-f = open('outfile.' + indexData[0], 'w')
+	f = open('outfile.' + indexData[0], 'w')
 
-print 'File extension: ', indexData[0]
+	print 'File extension: ', indexData[0]
 
-dataLocs = indexData[2].split('.')
+	dataLocs = indexData[2].split('.')
 
-for loc in dataLocs:
-	if loc == '': break
-	img = Image.fromarray(frames[int(loc)])
-	block = stepic.decode(img).decode()
-	f.write(block)
+	for loc in dataLocs:
+		if loc == '': break
+		img = Image.fromarray(frames[int(loc)])
+		block = stepic.decode(img).decode()
+		f.write(block)
 
-print 'Wrote file. Check \'outfile.txt\''
+	print 'Wrote file. Check \'outfile.txt\''
