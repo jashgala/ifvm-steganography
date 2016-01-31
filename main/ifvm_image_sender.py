@@ -45,7 +45,7 @@ def sliceAndEmbed(frames, secret_img_path, occ):
 
 	# Rough Index data for now
 	indexData = str(secret_img.size[0]) + ";" + str(secret_img.size[1]) + ";" 
-	indexData+= str(len(tiles)) + ";" + str(tiles[0].image.size[0]) + ';' + str(tiles[0].image.size[1])
+	indexData+= str(len(tiles)) + ";" + str(tiles[0].image.size[0]) + ';' + str(tiles[0].image.size[1]) + '.'
 	index = multi_text_sender.generateRandomFrameNo(len(frames), occ)
 	for i in tiles:
 		loc = multi_text_sender.generateRandomFrameNo(len(frames), occ)
@@ -62,6 +62,7 @@ def sliceAndEmbed(frames, secret_img_path, occ):
 
 def writeToVideo(frames, output_path, fps):
 	h, w = frames[0].shape[:2]	
+
 
 if __name__ == '__main__':
 	main()

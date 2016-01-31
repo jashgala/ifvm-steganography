@@ -32,7 +32,9 @@ def generateIndexHash(frame_number):
 	enc_obj = AES.new('IFVM_STD_KEYCODE', AES.MODE_ECB) #note that key must be 16x chars
 	string_to_encrypt = str(frame_number).zfill(16) #padding to make message size 16x
 	generated_hash = enc_obj.encrypt(string_to_encrypt) #encryption to generate the hash
-	print binascii.hexlify(generated_hash)
+	key = binascii.hexlify(generated_hash)
+	print key
+	return key
 
 def stegoTextBlocks(frames, occ, blocks):
 	index = generateRandomFrameNo(len(frames), occ) # <- Index at which our data is hidden (frame no.)

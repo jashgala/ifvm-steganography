@@ -3,7 +3,7 @@ from PIL import Image
 from PIL import ImageOps
 
 def extract_image(from_image, s=8):
-    data = Image.open(from_image)
+    data = from_image
     for x in range(data.size[0]):
         for y in range(data.size[1]):
             p = data.getpixel((x,y))
