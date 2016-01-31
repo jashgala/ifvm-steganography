@@ -48,7 +48,7 @@ def stegoTextBlocks(frames, occ, blocks):
 	for block in blocks:
 		loc = generateRandomFrameNo(len(frames), occ)
 		indexData += str(loc) + '.'
-		img = Image.fromarray(frames[index])
+		img = Image.fromarray(frames[loc])
 		stegimg = stepic.encode(img, block)
 		frames[loc] = np.array(stegimg)
 		
