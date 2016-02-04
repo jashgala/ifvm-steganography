@@ -16,7 +16,7 @@ occ = []
 
 def main():
 	cover_video = 'drop.avi'
-	secret_img_path = 'Desitakes.jpg'
+	secret_img_path = 'Desitakes.png'
 	cap = cv2.VideoCapture(cover_video)
 	frameCount = cap.get(cv2.CAP_PROP_FRAME_COUNT)
 	fps = cap.get(cv2.CAP_PROP_FPS) # Framerate of o/p = i/p
@@ -51,18 +51,25 @@ def sliceAndEmbed(frames, secret_img_path, occ):
 		loc = multi_text_sender.generateRandomFrameNo(len(frames), occ)
 		indexData += str(loc) + '.'
 		cover_img = Image.fromarray(frames[loc])
+		i.image = i.image.convert('RGB')
 		temp = ioi.hide_image(cover_img, i.image)
+		temp = temp.convert('RGBA')
+		temp.save('temp'+str(loc)+'.png')
 		frames[loc] = np.array(temp)
 
 	# Index
 	cover_img = Image.fromarray(frames[index])
-	temp = ioi.hide_image(cover_img, i.image)
+	temp = stepic.encode(cover_img, indexData)
 	frames[index] = np.array(temp)
+	print index
 	return frames
 
 def writeToVideo(frames, output_path, fps):
-	h, w = frames[0].shape[:2]	
-
+	h, w = frames[0].shape[:2]
+	fourcc = cv2.VideoWriter_fourcc(*'DIB ')
+	out = cv2.VideoWriter('output.avi', fourcc, fps, (w,h))
+	for each_frame in frames:
+		out.write(each_frame)
 
 if __name__ == '__main__':
 	main()

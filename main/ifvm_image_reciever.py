@@ -12,14 +12,14 @@ import multi_text_receiver
 import Image_on_image as ioi
 
 def main():
-	cap = cv2.VideoCapture('drop.avi')
+	cap = cv2.VideoCapture('output.avi')
 	# input_hash = raw_input('Enter the key for your data: ')
 	# index = int(multi_text_receiver.decodeIndexHash(binascii.unhexlify(input_hash))) # <- Index at which our data is hidden
-	index = 4
+	index = 144
 	frameCount = cap.get(cv2.CAP_PROP_FRAME_COUNT)
 	frames = getAllFrames(cap)
 	secret_img = extract(frames, index)
-
+	secret_img.save('secret.png')
 
 def getAllFrames(cap):
 	frames = []
@@ -54,8 +54,9 @@ def extract(frames, index):
 	noOfTiles = int(metaData[2])
 	slice_size = (int(metaData[3]), int(metaData[4]))
 	t = []
-	for i in range(1,len(indexData)):
+	for i in indexData[1:len(indexData)-1]:
 		temp = frames[int(i)]
+		# Image.fromarray(temp).save('recvd'+i+'.png')
 		res = ioi.extract_image(Image.fromarray(temp)).resize((slice_size[0], slice_size[1]))
 		t.append(res)
 	extracted_image = reassemble_image(t, slice_size, secret_img_size[0]/slice_size[0], secret_img_size[1]/slice_size[1])

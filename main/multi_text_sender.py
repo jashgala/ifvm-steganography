@@ -3,7 +3,7 @@ import numpy as np
 from PIL import Image
 import stepic
 import random
-
+import os
 from Crypto.Cipher import AES
 import binascii
 
@@ -60,10 +60,10 @@ def stegoTextBlocks(frames, occ, blocks):
 
 if __name__ == '__main__':
 	### MAIN PROGRAM ###
-	cap = cv2.VideoCapture('sample1.avi')
+	cap = cv2.VideoCapture('drop.avi')
+	print cap.grab()
 	frameCount = cap.get(cv2.CAP_PROP_FRAME_COUNT)
 	print frameCount 
-
 	# generate all frames
 	frames = []
 	while True:
