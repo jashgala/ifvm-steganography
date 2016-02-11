@@ -20,7 +20,8 @@ def main():
 def embed(cover, secret, occ, saveLocation = "output.avi"):
 	'''Embeds  images. Call this function when the module is imported
 	cover = Cover Video Path/Location
-	secret = secret Video Path/Location'''
+	secret = secret Video Path/Location
+	occ = List of occupied frames'''
 
 	# Opening video & extracting frames
 	cap = cv2.VideoCapture(cover)
