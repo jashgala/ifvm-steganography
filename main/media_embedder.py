@@ -63,6 +63,7 @@ def embed(cover, secret, occ, saveLocation = "output.avi"):
 	stegimg = stepic.encode(img, indexData)
 	frames[index] = np.array(stegimg)
 	ifvm.writeToVideo(frames, saveLocation, fps)
+	return occ
 
 if __name__ == '__main__':
 	main()
