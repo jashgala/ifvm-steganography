@@ -25,6 +25,7 @@ def extract(cover, key):
 
 	img = Image.fromarray(frames[index])
 	indexData = stepic.decode(img).decode()
+	print indexData
 	indexData = indexData.split(';')
 
 	media_txt_location = 'outfile.' + indexData[0]

@@ -55,6 +55,7 @@ def generateTextBlocks(filename, byteCapacity):
 def writeToVideo(frames, output_path, fps):
 	h, w = frames[0].shape[:2]
 	fourcc = cv2.VideoWriter_fourcc(*'DIB ')
-	out = cv2.VideoWriter('output.avi', fourcc, fps, (w,h))
+	out = cv2.VideoWriter(output_path, fourcc, fps, (w,h))
 	for each_frame in frames:
 		out.write(each_frame)
+	return output_path
