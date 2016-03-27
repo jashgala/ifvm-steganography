@@ -20,10 +20,11 @@ def main():
 		secret = raw_input("Enter the file name of the media you want to embed in the video: ")
 		cover, occ = embd.embed(cover, secret, occ, saveLocation = "output.avi")
 
-def embed_multiple(cover, secret, occ, saveLocation)
+def embed_multiple(cover, secret, occ, saveLocation):
 	for i in range(count):
 		secret = raw_input("Enter the file name of the media you want to embed in the video: ")
 		cover, occ = embd.embed(cover, secret, occ, saveLocation = "output.avi")
+
 # ffmpeg -i bunny.flv -vn -acodec copy output-audio.m4a
 # ffmpeg -i output.avi -i output-audio.aac -vcodec copy -acodec copy muxed_file.avi
 if __name__ == '__main__':
