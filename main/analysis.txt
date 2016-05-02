@@ -1,0 +1,4 @@
+Drop.avi :: flame.avi,vivaldi.mp3 :: PSNR=13.6471432216 ; MSE=2807.79915311
+Flame.avi :: stock.jpg,file1.txt :: PSNR=13.588569676 ; MSE=2845.92462343
+sample2.avi :: flame.avi,vivaldi.mp3 :: PSNR: 11.5794359778; MSE=4519.98260124
+cbw3.avi :: flame.avi,vivaldi.mp3,file1.txt :: PSNR: 15.1403139047; MSE: 1990.89781699

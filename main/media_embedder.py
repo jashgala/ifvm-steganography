@@ -30,9 +30,10 @@ def embed(cover, secret, occ, saveLocation = "output.avi"):
 	global key
 	# Opening video & extracting frames
 	cap = cv2.VideoCapture(cover)
-	frameCount = cap.get(cv2.CAP_PROP_FRAME_COUNT)
+	frameCount = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
 	fps = cap.get(cv2.CAP_PROP_FPS)
 	frames = ifvm.getAllFrames(cap)
+	not_occupied = [i for i in range(frameCount) if i not in occ]
 
 	# Opening secret Image and converting to string for embedding
 	secret_media_text_file_path = "secret_file_154861.txt"
@@ -49,14 +50,14 @@ def embed(cover, secret, occ, saveLocation = "output.avi"):
 
 	blocks = ifvm.generateTextBlocks(secret_media_text_file_path, byteCapacity)
 	# os.remove(secret_media_text_file_path)
-	index = ifvm.generateRandomFrameNo(len(frames), occ)
+	index = ifvm.generateRandomFrameNo(len(frames), occ, not_occupied)
 	key = ifvm.generateIndexHash(index)
 
 	# generating data that will be encoded in index frame
 	indexData = ifvm.generateIndexData('output.txt', secret.split('.')[-1])
 
 	for block in blocks:
-		loc = ifvm.generateRandomFrameNo(len(frames), occ)
+		loc = ifvm.generateRandomFrameNo(len(frames), occ, not_occupied)
 		indexData += str(loc) + '.'
 		img = Image.fromarray(frames[loc])
 		stegimg = stepic.encode(img, block)

@@ -7,13 +7,17 @@ import os
 from Crypto.Cipher import AES
 import binascii
 
-def generateRandomFrameNo(frameCount, occ):
+def generateRandomFrameNo(frameCount, occ, not_occupied):
 	''' Generates random frame number taking into account the occupied frames. '''
-	while (True):
-		ret = random.randrange(0, frameCount, 1)
-		if ret not in occ: 
-			occ += [ret]
-			return ret
+	if len(not_occupied) == 0:
+		print ""
+		print "All Frames occupied"
+		return -1
+	ret = random.randint(0,len(not_occupied)-1)
+	ret = not_occupied[ret]
+	not_occupied.remove(ret)
+	occ+=[ret]
+	return ret
 
 def generateIndexHash(frame_number):
 	enc_obj = AES.new('IFVM_STD_KEYCODE', AES.MODE_ECB) #note that key must be 16x chars
