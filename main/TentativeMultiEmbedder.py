@@ -18,5 +18,3 @@ count = int(raw_input("Enter the number of files you want to steganograph to ste
 for i in range(count):
 	secret = raw_input("Enter the file name of the media you want to embed in the video: ")
 	occ = embd.embed(cover, secret, occ, saveLocation = "output.avi")
-	
-	
