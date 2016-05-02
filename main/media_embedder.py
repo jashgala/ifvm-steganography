@@ -46,7 +46,7 @@ def embed(cover, secret, occ, saveLocation = "output.avi"):
 	# define capacity of each data frame
 	h, w = frames[0].shape[:2]
 	pixelCount = h * w - 1
-	byteCapacity = pixelCount / 9 # defines maximum no. of bytes that can be stored in an image (Ref. http://domnit.org/blog/2007/02/stepic-explanation.html)
+	byteCapacity = pixelCount / 3 # defines maximum no. of bytes that can be stored in an image (Ref. http://domnit.org/blog/2007/02/stepic-explanation.html)
 
 	blocks = ifvm.generateTextBlocks(secret_media_text_file_path, byteCapacity)
 	# os.remove(secret_media_text_file_path)

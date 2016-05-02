@@ -17,7 +17,9 @@ def main():
 
 	mse = 0.0
 	for i,j in zip(cover_frames, stego_frames):
-		mse += image_mse(i,j)
+		frame_mse = image_mse(i, j)
+		psnrList += [20*math.log10(255) - 10*math.log10(frame_mse)]
+		mse += frame_mse
 	mse = mse/frameCount
 	print("MSE:", mse)
 	psnr = 20*math.log10(255) - 10*math.log10(mse)
